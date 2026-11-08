@@ -1,0 +1,17 @@
+﻿{
+  "name": "clipcast",
+  "version": "1.0.0",
+  "description": "ClipCast - Claude connector that uploads videos to YouTube and TikTok",
+  "main": "server/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["claude","mcp","mcpb","youtube","tiktok","uploader"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "zod": "^4.6.7"
+  },
+  "type": "module"
+}

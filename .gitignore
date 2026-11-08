@@ -1,0 +1,9 @@
+node_modules/
+*.mcpb
+*.zip
+.env
+.env.*
+tokens.json
+*.log
+.DS_Store
+Thumbs.db

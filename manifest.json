@@ -1,0 +1,78 @@
+﻿{
+  "manifest_version": "0.3",
+  "name": "clipcast",
+  "display_name": "ClipCast â€“ YouTube & TikTok Uploader",
+  "version": "1.0.0",
+  "description": "Upload videos from your computer to YouTube and TikTok by asking Claude.",
+  "long_description": "ClipCast lets Claude upload videos to your YouTube channel and TikTok account using the official YouTube Data API and TikTok Content Posting API. Ask Claude to find a video, write the title, description and hashtags, and post it â€” or schedule it on YouTube. Your logins are stored only on your computer.",
+  "author": { "name": "bigheadofficial", "url": "https://github.com/bigheadofficial/clipcast" },
+  "icon": "icon.png",
+  "server": {
+    "type": "node",
+    "entry_point": "server/index.js",
+    "mcp_config": {
+      "command": "node",
+      "args": ["${__dirname}/server/index.js"],
+      "env": {
+        "GOOGLE_CLIENT_ID": "${user_config.google_client_id}",
+        "GOOGLE_CLIENT_SECRET": "${user_config.google_client_secret}",
+        "TIKTOK_CLIENT_KEY": "${user_config.tiktok_client_key}",
+        "TIKTOK_CLIENT_SECRET": "${user_config.tiktok_client_secret}",
+        "TIKTOK_SCOPES": "${user_config.tiktok_scopes}"
+      }
+    }
+  },
+  "tools": [
+    { "name": "clipcast_status", "description": "Show which accounts are connected and recent uploads" },
+    { "name": "connect_youtube", "description": "Sign in to YouTube in your browser" },
+    { "name": "connect_tiktok", "description": "Sign in to TikTok in your browser" },
+    { "name": "disconnect_account", "description": "Log out of YouTube or TikTok" },
+    { "name": "find_videos", "description": "List video files in a folder" },
+    { "name": "youtube_upload", "description": "Upload (or schedule) a video on YouTube" },
+    { "name": "youtube_my_videos", "description": "List recent uploads on your channel" },
+    { "name": "tiktok_account_info", "description": "Show TikTok account and allowed privacy options" },
+    { "name": "tiktok_upload", "description": "Post a video to TikTok or send it to your TikTok drafts" },
+    { "name": "upload_status", "description": "Check upload progress" }
+  ],
+  "user_config": {
+    "google_client_id": {
+      "type": "string",
+      "title": "Google OAuth Client ID (YouTube)",
+      "description": "From Google Cloud Console â†’ APIs & Services â†’ Credentials â†’ OAuth client (Desktop app). Leave empty if you only use TikTok.",
+      "required": false
+    },
+    "google_client_secret": {
+      "type": "string",
+      "title": "Google OAuth Client Secret (YouTube)",
+      "description": "The secret for the Desktop OAuth client above.",
+      "required": false,
+      "sensitive": true
+    },
+    "tiktok_client_key": {
+      "type": "string",
+      "title": "TikTok Client Key",
+      "description": "From developers.tiktok.com â†’ your app â†’ Credentials. Leave empty if you only use YouTube.",
+      "required": false
+    },
+    "tiktok_client_secret": {
+      "type": "string",
+      "title": "TikTok Client Secret",
+      "description": "From developers.tiktok.com â†’ your app â†’ Credentials.",
+      "required": false,
+      "sensitive": true
+    },
+    "tiktok_scopes": {
+      "type": "string",
+      "title": "TikTok scopes (advanced)",
+      "description": "Comma-separated. Remove video.upload if your TikTok app doesn't have the drafts permission.",
+      "required": false,
+      "default": "user.info.basic,video.publish,video.upload"
+    }
+  },
+  "keywords": ["youtube", "tiktok", "video", "upload", "social media", "scheduler"],
+  "license": "MIT",
+  "compatibility": {
+    "platforms": ["win32", "darwin", "linux"],
+    "runtimes": { "node": ">=18.0.0" }
+  }
+}

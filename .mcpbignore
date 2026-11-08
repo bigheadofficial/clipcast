@@ -1,0 +1,8 @@
+package-lock.json
+*.md.bak
+tests/
+
+legal-templates/
+skill/
+.git/
+
