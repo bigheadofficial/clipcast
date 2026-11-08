@@ -1,4 +1,4 @@
-﻿---
+---
 name: "clipcast-video-uploader"
 description: "Use when the user wants to upload, post, schedule or check videos on YouTube or TikTok through the ClipCast connector, or needs help setting ClipCast up."
 ---
